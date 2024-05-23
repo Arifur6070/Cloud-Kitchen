@@ -1,21 +1,12 @@
-#Official maven image to build my app
-FROM maven:3.8.4-openjdk-17 AS build
-WORKDIR /app
-
-
-#Copying Pom.xml file
-COPY pom.xml .
-COPY src ./src
-
-#Packaging the application
-RUN mvn clean package -DskipTests
-
 #OpenJDK version to run as the base image
-FROM openjdk:17-jdk-slim
-WORKDIR /app
+FROM tomcat:10.1.24-jre17-temurin
+LABEL "Project"="Cloud Kitchen Backend"
+LABEL "Author"="Md Arifur rahman"
 
-#Coping the packaged application to the /app directory
-COPY --from=build /app/target/*.jar app.jar
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY target/0.1.1-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["catalina.sh", "run"]
+WORKDIR /usr/local/tomcat/
+
