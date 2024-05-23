@@ -7,7 +7,6 @@ FLUSH PRIVILEGES;
 USE cloud_kitchen;
 
 
-
 -- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
 -- Host: localhost    Database: cloud_kitchen
@@ -243,3 +242,6 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-05-23  4:16:39
+
+
+
