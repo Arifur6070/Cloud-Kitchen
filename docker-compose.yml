@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   kitchendb:
-    image: mysql:8.0
+    image: mysql:8.0.36
     container_name: cloud-kitchen-db
     env_file:
       - .env
@@ -24,19 +24,21 @@ services:
     container_name: cloud-kitchen-app
     env_file:
       - .env
+    restart: always
     environment:
       SPRING_APPLICATION_NAME: ${SPRING_APP_NAME}
       SPRING_DATASOURCE_URL: ${MYSQL_DATABASE_URL}
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQLDialect
       SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE: 10MB
       SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE: 10MB
       JWT_SECRET: eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcxNTcyNjMwNiwiaWF0IjoxNzE1NzI2MzA2fQ.ojPbMUdQcRrARltvnN6vx71PMHaq_sq9xD2xASfiRb4
       JWT_EXPIRATIONINMS: 3600000
     ports:
       - "8081:8080"
+    
+
 
 volumes:
   cloud-kitchen-data:
