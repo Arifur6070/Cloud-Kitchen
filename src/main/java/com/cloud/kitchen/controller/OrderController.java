@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cloud.kitchen.model.Order;
 import com.cloud.kitchen.service.OrderService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 
 
+@Tag(name = "[1] Order Controller")
 @RestController
 @RequestMapping("/api/v1/orders")
 public class OrderController {
@@ -25,6 +27,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    
     @GetMapping
     public ResponseEntity<?> getAllOrders() {
         return ResponseEntity.ok(orderService.getAllOrders());

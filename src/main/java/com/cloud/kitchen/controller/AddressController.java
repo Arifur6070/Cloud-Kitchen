@@ -16,6 +16,10 @@ import com.cloud.kitchen.model.Address;
 import com.cloud.kitchen.request.AddressRequest;
 import com.cloud.kitchen.service.AddressService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+
+@Tag(name = "[4] Address Controller")
 @RestController
 @RequestMapping("/api/v1/address")
 public class AddressController {

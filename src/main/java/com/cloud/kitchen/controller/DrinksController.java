@@ -20,7 +20,9 @@ import com.cloud.kitchen.service.DrinkService;
 import com.cloud.kitchen.service.FileService;
 
 import io.jsonwebtoken.io.IOException;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "[3] Item Controller")
 @RestController
 @RequestMapping("/api/v1/items/drinks")
 public class DrinksController {
